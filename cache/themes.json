@@ -1,1 +1,89 @@
-{"Fancy": {"Cartoon": "https://www.dafont.com/theme.php?cat=101", "Comic": "https://www.dafont.com/theme.php?cat=102", "Groovy": "https://www.dafont.com/theme.php?cat=103", "Old_School": "https://www.dafont.com/theme.php?cat=104", "Curly": "https://www.dafont.com/theme.php?cat=105", "Western": "https://www.dafont.com/theme.php?cat=106", "Eroded": "https://www.dafont.com/theme.php?cat=107", "Distorted": "https://www.dafont.com/theme.php?cat=108", "Destroy": "https://www.dafont.com/theme.php?cat=109", "Horror": "https://www.dafont.com/theme.php?cat=110", "Fire_Ice": "https://www.dafont.com/theme.php?cat=111", "Decorative": "https://www.dafont.com/theme.php?cat=112", "Typewriter": "https://www.dafont.com/theme.php?cat=113", "Stencil_Army": "https://www.dafont.com/theme.php?cat=114", "Retro": "https://www.dafont.com/theme.php?cat=115", "Initials": "https://www.dafont.com/theme.php?cat=116", "Grid": "https://www.dafont.com/theme.php?cat=117", "Various": "https://www.dafont.com/theme.php?cat=118"}, "Foreign_look": {"Chinese_Jpn": "https://www.dafont.com/theme.php?cat=201", "Arabic": "https://www.dafont.com/theme.php?cat=202", "Mexican": "https://www.dafont.com/theme.php?cat=203", "Roman_Greek": "https://www.dafont.com/theme.php?cat=204", "Russian": "https://www.dafont.com/theme.php?cat=205", "Various": "https://www.dafont.com/theme.php?cat=206"}, "Techno": {"Square": "https://www.dafont.com/theme.php?cat=301", "LCD": "https://www.dafont.com/theme.php?cat=302", "Scifi": "https://www.dafont.com/theme.php?cat=303", "Various": "https://www.dafont.com/theme.php?cat=304", "Bitmap": "https://www.dafont.com/bitmap.php", "Pixel_Bitmap": "https://www.dafont.com/bitmap.php"}, "Gothic": {"Medieval": "https://www.dafont.com/theme.php?cat=401", "Modern": "https://www.dafont.com/theme.php?cat=402", "Celtic": "https://www.dafont.com/theme.php?cat=403", "Initials": "https://www.dafont.com/theme.php?cat=404", "Various": "https://www.dafont.com/theme.php?cat=405"}, "Basic": {"Sans_serif": "https://www.dafont.com/theme.php?cat=501", "Serif": "https://www.dafont.com/theme.php?cat=502", "Fixed_width": "https://www.dafont.com/theme.php?cat=503", "Various": "https://www.dafont.com/theme.php?cat=504"}, "Script": {"Calligraphy": "https://www.dafont.com/theme.php?cat=601", "School": "https://www.dafont.com/theme.php?cat=602", "Handwritten": "https://www.dafont.com/theme.php?cat=603", "Brush": "https://www.dafont.com/theme.php?cat=604", "Trash": "https://www.dafont.com/theme.php?cat=605", "Graffiti": "https://www.dafont.com/theme.php?cat=606", "Old_School": "https://www.dafont.com/theme.php?cat=607", "Various": "https://www.dafont.com/theme.php?cat=608"}, "Dingbats": {"Alien": "https://www.dafont.com/theme.php?cat=701", "Animals": "https://www.dafont.com/theme.php?cat=702", "Asian": "https://www.dafont.com/theme.php?cat=703", "Ancient": "https://www.dafont.com/theme.php?cat=704", "Runes_Elvish": "https://www.dafont.com/theme.php?cat=705", "Esoteric": "https://www.dafont.com/theme.php?cat=706", "Fantastic": "https://www.dafont.com/theme.php?cat=707", "Horror": "https://www.dafont.com/theme.php?cat=708", "Games": "https://www.dafont.com/theme.php?cat=709", "Shapes": "https://www.dafont.com/theme.php?cat=710", "Bar_Code": "https://www.dafont.com/theme.php?cat=711", "Nature": "https://www.dafont.com/theme.php?cat=712", "Sport": "https://www.dafont.com/theme.php?cat=713", "Heads": "https://www.dafont.com/theme.php?cat=714", "Kids": "https://www.dafont.com/theme.php?cat=715", "TV_Movie": "https://www.dafont.com/theme.php?cat=716", "Logos": "https://www.dafont.com/theme.php?cat=717", "Sexy": "https://www.dafont.com/theme.php?cat=718", "Army": "https://www.dafont.com/theme.php?cat=719", "Music": "https://www.dafont.com/theme.php?cat=720", "Various": "https://www.dafont.com/theme.php?cat=721"}, "Holiday": {"Valentine": "https://www.dafont.com/theme.php?cat=801", "Easter": "https://www.dafont.com/theme.php?cat=802", "Halloween": "https://www.dafont.com/theme.php?cat=803", "Christmas": "https://www.dafont.com/theme.php?cat=804", "Various": "https://www.dafont.com/theme.php?cat=805"}}
+{
+    "Fancy": {
+        "Cartoon": "https://www.dafont.com/theme.php?cat=101",
+        "Comic": "https://www.dafont.com/theme.php?cat=102",
+        "Groovy": "https://www.dafont.com/theme.php?cat=103",
+        "Old_School": "https://www.dafont.com/theme.php?cat=104",
+        "Curly": "https://www.dafont.com/theme.php?cat=105",
+        "Western": "https://www.dafont.com/theme.php?cat=106",
+        "Eroded": "https://www.dafont.com/theme.php?cat=107",
+        "Distorted": "https://www.dafont.com/theme.php?cat=108",
+        "Destroy": "https://www.dafont.com/theme.php?cat=109",
+        "Horror": "https://www.dafont.com/theme.php?cat=110",
+        "Fire_Ice": "https://www.dafont.com/theme.php?cat=111",
+        "Decorative": "https://www.dafont.com/theme.php?cat=112",
+        "Typewriter": "https://www.dafont.com/theme.php?cat=113",
+        "Stencil_Army": "https://www.dafont.com/theme.php?cat=114",
+        "Retro": "https://www.dafont.com/theme.php?cat=115",
+        "Initials": "https://www.dafont.com/theme.php?cat=116",
+        "Grid": "https://www.dafont.com/theme.php?cat=117",
+        "Various": "https://www.dafont.com/theme.php?cat=118"
+    },
+    "Foreign_look": {
+        "Chinese_Jpn": "https://www.dafont.com/theme.php?cat=201",
+        "Arabic": "https://www.dafont.com/theme.php?cat=202",
+        "Mexican": "https://www.dafont.com/theme.php?cat=203",
+        "Roman_Greek": "https://www.dafont.com/theme.php?cat=204",
+        "Russian": "https://www.dafont.com/theme.php?cat=205",
+        "Various": "https://www.dafont.com/theme.php?cat=206"
+    },
+    "Techno": {
+        "Square": "https://www.dafont.com/theme.php?cat=301",
+        "LCD": "https://www.dafont.com/theme.php?cat=302",
+        "Scifi": "https://www.dafont.com/theme.php?cat=303",
+        "Various": "https://www.dafont.com/theme.php?cat=304"
+    },
+    "Gothic": {
+        "Medieval": "https://www.dafont.com/theme.php?cat=401",
+        "Modern": "https://www.dafont.com/theme.php?cat=402",
+        "Celtic": "https://www.dafont.com/theme.php?cat=403",
+        "Initials": "https://www.dafont.com/theme.php?cat=404",
+        "Various": "https://www.dafont.com/theme.php?cat=405"
+    },
+    "Basic": {
+        "Sans_serif": "https://www.dafont.com/theme.php?cat=501",
+        "Serif": "https://www.dafont.com/theme.php?cat=502",
+        "Fixed_width": "https://www.dafont.com/theme.php?cat=503",
+        "Various": "https://www.dafont.com/theme.php?cat=504"
+    },
+    "Script": {
+        "Calligraphy": "https://www.dafont.com/theme.php?cat=601",
+        "School": "https://www.dafont.com/theme.php?cat=602",
+        "Handwritten": "https://www.dafont.com/theme.php?cat=603",
+        "Brush": "https://www.dafont.com/theme.php?cat=604",
+        "Trash": "https://www.dafont.com/theme.php?cat=605",
+        "Graffiti": "https://www.dafont.com/theme.php?cat=606",
+        "Old_School": "https://www.dafont.com/theme.php?cat=607",
+        "Various": "https://www.dafont.com/theme.php?cat=608"
+    },
+    "Dingbats": {
+        "Alien": "https://www.dafont.com/theme.php?cat=701",
+        "Animals": "https://www.dafont.com/theme.php?cat=702",
+        "Asian": "https://www.dafont.com/theme.php?cat=703",
+        "Ancient": "https://www.dafont.com/theme.php?cat=704",
+        "Runes_Elvish": "https://www.dafont.com/theme.php?cat=705",
+        "Esoteric": "https://www.dafont.com/theme.php?cat=706",
+        "Fantastic": "https://www.dafont.com/theme.php?cat=707",
+        "Horror": "https://www.dafont.com/theme.php?cat=708",
+        "Games": "https://www.dafont.com/theme.php?cat=709",
+        "Shapes": "https://www.dafont.com/theme.php?cat=710",
+        "Bar_Code": "https://www.dafont.com/theme.php?cat=711",
+        "Nature": "https://www.dafont.com/theme.php?cat=712",
+        "Sport": "https://www.dafont.com/theme.php?cat=713",
+        "Heads": "https://www.dafont.com/theme.php?cat=714",
+        "Kids": "https://www.dafont.com/theme.php?cat=715",
+        "TV_Movie": "https://www.dafont.com/theme.php?cat=716",
+        "Logos": "https://www.dafont.com/theme.php?cat=717",
+        "Sexy": "https://www.dafont.com/theme.php?cat=718",
+        "Army": "https://www.dafont.com/theme.php?cat=719",
+        "Music": "https://www.dafont.com/theme.php?cat=720",
+        "Various": "https://www.dafont.com/theme.php?cat=721"
+    },
+    "Holiday": {
+        "Valentine": "https://www.dafont.com/theme.php?cat=801",
+        "Easter": "https://www.dafont.com/theme.php?cat=802",
+        "Halloween": "https://www.dafont.com/theme.php?cat=803",
+        "Christmas": "https://www.dafont.com/theme.php?cat=804",
+        "Various": "https://www.dafont.com/theme.php?cat=805"
+    }
+}

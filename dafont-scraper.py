@@ -18,12 +18,14 @@ def get_themes_info():
   category = None
 
   for theme_link in theme_links:
-    print(f'cat: {theme_link.text} link: {theme_link.get_attribute("href")}')
+    # print(f'cat: {theme_link.text} link: {theme_link.get_attribute("href")}')
     key = theme_link.text.strip().replace(' ', '_')
     key = re.sub('\W', '', key)
-    print(f'key: {key}')
+    # print(f'key: {key}')
 
-    if re.search('mtheme', theme_link.get_attribute("href")):
+    if re.search('bitmap.php', theme_link.get_attribute("href")):
+      print(f'WARNING: skipping bitmap fonts.')
+    elif re.search('mtheme', theme_link.get_attribute("href")):
       category = key
       themes[category] = {}
     elif category is not None:
@@ -44,7 +46,7 @@ def get_fonts(
     url += '&l[]=10&l[]=1'
 
   driver.get(url)
-  print(url)
+  # print(url)
 
   # max_page_count
   noindex_div = driver.find_elements(by=By.CLASS_NAME, value='noindex')[0]
@@ -57,12 +59,12 @@ def get_fonts(
     except ValueError:
       pass
 
-  print(max_page_count)
+  # print(max_page_count)
 
   for i in range(max_page_count):
     page_num = i + 1
     page_url = url + '&page=' + str(page_num)
-    print(page_url)
+    # print(page_url)
 
     driver.get(page_url)
 
@@ -89,6 +91,8 @@ def collect_font_info(category, theme):
     download_e = download_elements[i]
 
     info_links = info_e.find_elements(by=By.TAG_NAME, value='a')
+    if len(info_links) < 2:
+      continue
     font_name = info_links[0].text
     font_link = info_links[0].get_attribute('href').split('?')[0]
     font_creator = info_links[1].text
@@ -144,7 +148,7 @@ def collect_font_info(category, theme):
   '-o',
   '--out_path',
   type=click.Path(exists=False),
-  default=os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out', 'manifest.json')),
+  default=os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cache', 'font_list.json')),
   show_default=True,
   help='Where to save the manifest.'
 )
@@ -175,13 +179,13 @@ def scrape(
     f = open(themes_cache, 'r')
     themes = json.load(f)
   else:
-    themes = get_themes_info(driver)
+    themes = get_themes_info()
     if use_cache:
       f = open(themes_cache, 'w') 
-      json.dump(themes, f) 
+      json.dump(themes, f, indent=4) 
       f.close()
 
-  print(themes)
+  # print(themes)
 
   for category in themes.keys():
     for theme in themes[category].keys():
@@ -192,7 +196,7 @@ def scrape(
     if debug:
       break
 
-  print(all_fonts)
+  # print(all_fonts)
 
   d_name = 'dafonts-'
   if free_only:
@@ -200,7 +204,7 @@ def scrape(
   else:
     d_name += 'nonfree'
 
-  manifest = {
+  font_list = {
     'dataset_name': d_name,
     'date': str(datetime.datetime.now()),
     'font_info': all_fonts
@@ -209,7 +213,7 @@ def scrape(
   os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
   f = open(out_path, 'w') 
-  json.dump(manifest, f, indent=4) 
+  json.dump(font_list, f, indent=4) 
   f.close()
 
   if debug:
