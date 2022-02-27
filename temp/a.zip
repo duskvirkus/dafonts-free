@@ -1,0 +1,11 @@
+--2022-02-27 13:34:19--  http://dl.dafont.com/dl/?f=rayman_2
+Resolving dl.dafont.com (dl.dafont.com)... 188.165.13.72
+Connecting to dl.dafont.com (dl.dafont.com)|188.165.13.72|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 44442 (43K) [application/zip]
+Saving to: ‘index.html?f=rayman_2.1’
+
+     0K .......... .......... .......... .......... ...       100% 85.4K=0.5s
+
+2022-02-27 13:34:20 (85.4 KB/s) - ‘index.html?f=rayman_2.1’ saved [44442/44442]
+

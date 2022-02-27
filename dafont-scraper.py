@@ -1,17 +1,17 @@
 import click
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 import os
 import re
 import json
+import datetime
 
-def get_themes_info(
-  driver,
-):
+def get_themes_info():
 
   themes = {}
 
-  table_div = driver.find_element_by_id("menuthemes")
-  theme_links = table_div.find_elements_by_tag_name("a")
+  table_div = driver.find_element(By.ID, 'menuthemes')
+  theme_links = table_div.find_elements(by=By.TAG_NAME, value='a')
 
   # alpha_ = re.compile('\w')
 
@@ -33,6 +33,84 @@ def get_themes_info(
 
   return themes
 
+def get_fonts(
+  url,
+  category,
+  theme,
+):
+  url += '&sort=date&fpp=200'
+
+  if free_only:
+    url += '&l[]=10&l[]=1'
+
+  driver.get(url)
+  print(url)
+
+  # max_page_count
+  noindex_div = driver.find_elements(by=By.CLASS_NAME, value='noindex')[0]
+  page_links = noindex_div.find_elements(by=By.TAG_NAME, value='a')
+  max_page_count = 1
+  for l in page_links:
+    try:
+      num = int(l.text)
+      max_page_count = max(max_page_count, num)
+    except ValueError:
+      pass
+
+  print(max_page_count)
+
+  for i in range(max_page_count):
+    page_num = i + 1
+    page_url = url + '&page=' + str(page_num)
+    print(page_url)
+
+    driver.get(page_url)
+
+    all_fonts.extend(collect_font_info(category, theme))
+
+    if debug:
+      break
+
+  # max_page_count
+
+
+def collect_font_info(category, theme):
+  fonts = []
+
+  info_elements = driver.find_elements(by=By.CLASS_NAME, value='lv1left')
+  download_elements = driver.find_elements(by=By.CLASS_NAME, value='dl')
+
+  # print(len(info_elements), len(download_elements))
+
+  assert(len(info_elements) == len(download_elements))
+
+  for i in range(len(info_elements)):
+    info_e = info_elements[i]
+    download_e = download_elements[i]
+
+    info_links = info_e.find_elements(by=By.TAG_NAME, value='a')
+    font_name = info_links[0].text
+    font_link = info_links[0].get_attribute('href').split('?')[0]
+    font_creator = info_links[1].text
+    font_download = download_e.get_attribute('href')
+
+    font = {
+      'name': font_name,
+      'dafont_link': font_link,
+      'creator': font_creator,
+      'download': font_download,
+      'category': category,
+      'theme': theme,
+    }
+
+    fonts.append(font)
+
+    # if debug:
+    #   break
+  
+  return fonts
+  
+
 @click.command()
 @click.option(
   '--no_cache',
@@ -52,12 +130,42 @@ def get_themes_info(
   show_default=True,
   help='Path to themes json cache. If does not exist one will be saved at the specified location unless --no_cache is passed.'
 )
+@click.option(
+  '--debug_run',
+  is_flag=True,
+  help='Run only the first element in lists to help with debugging. And will keep browser window open.',
+)
+@click.option(
+  '--non_free',
+  is_flag=True,
+  help='Include non free fonts.',
+)
+@click.option(
+  '-o',
+  '--out_path',
+  type=click.Path(exists=False),
+  default=os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out', 'manifest.json')),
+  show_default=True,
+  help='Where to save the manifest.'
+)
 def scrape(
   no_cache,
   exe_path,
   themes_cache,
+  debug_run,
+  non_free,
+  out_path,
 ):
+  global driver
+  global free_only
+  global debug
+  global all_fonts
+
+  all_fonts = []
+
   use_cache = not no_cache
+  free_only = not non_free
+  debug = debug_run
 
   driver = webdriver.Chrome(executable_path=exe_path)
   driver.get("https://www.dafont.com/")
@@ -75,8 +183,38 @@ def scrape(
 
   print(themes)
 
-  while(True):
-    pass
+  for category in themes.keys():
+    for theme in themes[category].keys():
+      fonts = get_fonts(themes[category][theme], category, theme)
+
+      if debug:
+        break
+    if debug:
+      break
+
+  print(all_fonts)
+
+  d_name = 'dafonts-'
+  if free_only:
+    d_name += 'free'
+  else:
+    d_name += 'nonfree'
+
+  manifest = {
+    'dataset_name': d_name,
+    'date': str(datetime.datetime.now()),
+    'font_info': all_fonts
+  }
+
+  os.makedirs(os.path.dirname(out_path), exist_ok=True)
+
+  f = open(out_path, 'w') 
+  json.dump(manifest, f, indent=4) 
+  f.close()
+
+  if debug:
+    while(True):
+      pass
 
 
 
