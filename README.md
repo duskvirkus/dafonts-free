@@ -34,9 +34,11 @@ python dist.py --help
 
 ## Citation
 
+```bibtex
 @misc{dafonts-free,
   title         = {Dafonts Free Dataset},
   year          = {2022},
   url           = {https://github.com/duskvirkus/dafonts-free}
   author        = {D. Virkus},
 }
+```
