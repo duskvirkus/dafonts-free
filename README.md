@@ -43,7 +43,7 @@ python dist.py --help
 ```bibtex
 @misc{dafonts-free,
   title         = {Dafonts Free Dataset},
-  year          = {2022},
+  year          = {1 March 2022},
   url           = {https://github.com/duskvirkus/dafonts-free}
   author        = {D. Virkus},
 }
