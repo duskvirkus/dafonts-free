@@ -5,20 +5,6 @@ import json
 
 from utils import path_format
 
-def is_font_ext(file_name):
-  if not '.' in file_name:
-    return False
-
-  extension = file_name.split('.')[-1].lower()
-
-  if extension == 'ttf' or extension == 'otf' or extension == 'woff' or extension == 'woff2' or extension == 'eot' or extension == 'pfb' or extension == 'dfont':
-    return True
-  elif extension == 'pdf' or extension == 'txt' or extension == 'jpg' or extension == 'png' or extension == 'gif' or extension == 'html' or extension == 'psd' or extension == 'htm' or extension == 'rtf' or extension == 'svg' or extension == 'doc' or extension == 'url' or extension == 'bmp' or extension == 'wps' or extension == 'pfm' or extension == 'nfo' or extension == 'afm' or extension == 'ai' or extension == 'jpeg' or extension == 'inf' or extension == 'wri' or extension == 'sfd' or extension == 'bin' or extension == 'css' or extension == 'license' or extension == 'readme' or extension == 'docx' or extension == 'ds_store' or extension == 'md' or extension == 'changelog' or extension == 'exe' or extension == 'js' or extension == 'read me!' or extension == 'pin pon pin pon pin pon' or extension == '3o9' or extension == 'peace':
-    return False
-
-  print(f'WARNING! unexpected file format {extension}')
-  return False
-
 @click.command()
 @click.option(
   '-o',
@@ -43,14 +29,22 @@ def is_font_ext(file_name):
   default=os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'download')),
   show_default=True,
 )
+@click.option(
+  '--print_extension_info',
+  is_flag=True,
+  help='Will print sorted dictionary of extensions and exit.',
+)
 def dist(
   output,
   input,
   downloads_path,
+  print_extension_info,
 ):
   project_root = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
 
   os.makedirs(output)
+  fonts_output = os.path.join(output, 'fonts')
+  os.makedirs(fonts_output)
 
   shutil.copyfile(os.path.join(project_root, 'LICENCE.md'), os.path.join(output, 'LICENCE.md'))
 
@@ -61,27 +55,57 @@ def dist(
   f = open(input, 'r')
   data = json.load(f)
 
-  count = 0
+  if print_extension_info:
+    extensions = {}
+
+  num_fonts = []
+  all_font_creators = []
+  date_scraped = data['date']
+  
   for font in data['font_info']:
     downloaded_path = os.path.join(downloads_path, path_format(font['category']), path_format(font['theme']), path_format(font['creator']), path_format(font['name']))
 
     for root, _, files in os.walk(downloaded_path):
       for f in files:
-        # print(root)
-        # print(f)
+        if '.' in f:
 
-        file_type = f.split('.')[-1].lower()
-        # print(file_type)
+          dest_file_name = path_format(f, allow_dots=True)
+          file_type = f.split('.')[-1].lower()
 
-        if is_font_ext(f):
-          pass
+          if file_type == 'ttf' or file_type == 'otf':
+            shutil.copyfile(os.path.join(root, f), os.path.join(fonts_output, dest_file_name))
+            csv_file.write('\r\n')
+            csv_file.write(f"{dest_file_name},{font['name']},{file_type},{font['creator']},{font['category']},{font['theme']}")
+            all_font_creators.append(font['creator'])
+            num_fonts.append(dest_file_name)
 
-    # count += 1
-    # if count > 1000:
-    #   break
+          if print_extension_info:
+            if file_type in extensions:
+              extensions[file_type] += 1
+            else:
+              extensions[file_type] = 1
 
+  if print_extension_info:
+    extensions = dict(sorted(extensions.items(), key=lambda x:x[1]))
+    print(extensions)
 
   csv_file.close()
+
+  num_fonts = len(list(set(num_fonts)))
+
+  readme = open(os.path.join(output, 'readme.txt'), 'w')
+  readme.write(f'Dafonts Free Dataset\nThis is a dataset of {num_fonts} fonts labeled as `100% Free` and `Public domain / GPL / OFL` on https://www.dafont.com/ with `.ttf` and `.otf\nCode used to create it can be found at: https://github.com/duskvirkus/dafonts-free\nThis version was created based on download links scraped from dafont.com on {date_scraped}\n')
+  readme.write('Citation information:\n@misc{dafonts-free,\n  title         = {Dafonts Free Dataset},\n  year          = {6 March 2022},\n  url           = {https://github.com/duskvirkus/dafonts-free}\n  author        = {D. Virkus},\n}\n')
+
+  # dedupe creator list
+  all_font_creators = list(set(all_font_creators))
+  all_font_creators_str = ''
+  for c in all_font_creators:
+    all_font_creators_str += c
+    all_font_creators_str += '\n'
+
+  readme.write(f'All Font Creators:\n{all_font_creators_str}\n')
+  readme.close()
 
 if __name__ == '__main__':
   dist()
