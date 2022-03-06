@@ -5,6 +5,13 @@ import json
 
 from utils import path_format
 
+def csv_format(val):
+
+  if '"' in val:
+    return f'"{val}"'
+
+  return val
+
 @click.command()
 @click.option(
   '-o',
@@ -75,7 +82,7 @@ def dist(
           if file_type == 'ttf' or file_type == 'otf':
             shutil.copyfile(os.path.join(root, f), os.path.join(fonts_output, dest_file_name))
             csv_file.write('\r\n')
-            csv_file.write(f"{dest_file_name},{font['name']},{file_type},{font['creator']},{font['category']},{font['theme']}")
+            csv_file.write(f"{dest_file_name},{csv_format(font['name'])},{file_type},{csv_format(font['creator'])},{csv_format(font['category'])},{csv_format(font['theme'])}")
             all_font_creators.append(font['creator'])
             num_fonts.append(dest_file_name)
 
@@ -94,7 +101,7 @@ def dist(
   num_fonts = len(list(set(num_fonts)))
 
   readme = open(os.path.join(output, 'readme.txt'), 'w')
-  readme.write(f'Dafonts Free Dataset\nThis is a dataset of {num_fonts} fonts labeled as `100% Free` and `Public domain / GPL / OFL` on https://www.dafont.com/ with `.ttf` and `.otf\nCode used to create it can be found at: https://github.com/duskvirkus/dafonts-free\nThis version was created based on download links scraped from dafont.com on {date_scraped}\n')
+  readme.write(f'Dafonts Free Dataset\nThis is a dataset of {num_fonts} fonts labeled as `100% Free` and `Public domain / GPL / OFL` on https://www.dafont.com/ with .ttf and .otf extensions.\nCode used to create it can be found at: https://github.com/duskvirkus/dafonts-free\nThis version was created based on download links scraped from dafont.com on {date_scraped}\n')
   readme.write('Citation information:\n@misc{dafonts-free,\n  title         = {Dafonts Free Dataset},\n  year          = {6 March 2022},\n  url           = {https://github.com/duskvirkus/dafonts-free}\n  author        = {D. Virkus},\n}\n')
 
   # dedupe creator list
