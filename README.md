@@ -2,7 +2,7 @@
 
 This is the git repository associated the dafonts-free dataset. A dataset constructed of fonts labeled as `100% Free` and `Public domain / GPL / OFL` on https://www.dafont.com/ with `.ttf` and `.otf` extensions.
 
-![Header image says dafonts free in changing fonts.](assets/dafonts-free-header.gif)
+![Header image says dafonts free in changing fonts.](dafonts-free-header.gif)
 
 This repository includes the python code used to collect and organize the dataset. 
 
