@@ -88,3 +88,7 @@ python dist.py --help
   author        = {D. Virkus},
 }
 ```
+
+## Other
+
+Papers with Code Link: [https://paperswithcode.com/dataset/dafonts-free](https://paperswithcode.com/dataset/dafonts-free)
