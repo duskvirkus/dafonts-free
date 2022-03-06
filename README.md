@@ -28,10 +28,10 @@ link: []()
 
 ### Internet Archive
 
-link: []()
+link: [https://archive.org/details/dafonts-free-v1](https://archive.org/details/dafonts-free-v1)
 
 ```
-wget 
+wget https://archive.org/download/dafonts-free-v1/dafonts-free-v1.zip
 ```
 
 ### gdown
