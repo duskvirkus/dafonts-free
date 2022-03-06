@@ -1,4 +1,4 @@
-# DaFonts Free Dataset
+# Dafonts Free Dataset
 
 This is the git repository associated the dafonts-free dataset. A dataset constructed of fonts labeled as `100% Free` and `Public domain / GPL / OFL` on https://www.dafont.com/ with `.ttf` and `.otf` extensions.
 
@@ -24,7 +24,11 @@ fcbc92ef45e39eec18e694d2d4a0b1c8e8fc84b004e23ec9b3708663e9b63c0f  dafonts-free-v
 
 ### GitHub Release
 
-link: []()
+link: [https://github.com/duskvirkus/dafonts-free/releases/tag/v1.0.0](https://github.com/duskvirkus/dafonts-free/releases/tag/v1.0.0)
+
+```bash
+wget https://github.com/duskvirkus/dafonts-free/releases/download/v1.0.0/dafonts-free-v1.zip
+```
 
 ### Internet Archive
 
