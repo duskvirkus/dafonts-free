@@ -154,5 +154,6 @@ cython_debug/
 chromedriver
 out
 download*
+!download.py
 dist
 dafonts-free-*

@@ -10,11 +10,41 @@ The dataset it's self is available as a zip file containing a `.csv` file with f
 
 Dataset is provided as-is (stated in the license) and if possible credit the creators the fonts in any project you use this dataset for.
 
-## Download Dataset
+## Dataset
 
-GitHub Release: _
-archive.org: _
-gdown id: _
+```bash
+sha1sum dafonts-free-v1.zip
+6c7897c5a3b7f1e24143bf1db19373f2d2e16393  dafonts-free-v1.zip
+```
+
+```bash
+sha256sum dafonts-free-v1.zip
+fcbc92ef45e39eec18e694d2d4a0b1c8e8fc84b004e23ec9b3708663e9b63c0f  dafonts-free-v1.zip
+```
+
+### GitHub Release
+
+link: []()
+
+### Internet Archive
+
+link: []()
+
+```
+wget 
+```
+
+### gdown
+
+link: [https://drive.google.com/file/d/1CVczE86Vg3KIlXFuPOGu3Y_zGZHJ-6VV](https://drive.google.com/file/d/1CVczE86Vg3KIlXFuPOGu3Y_zGZHJ-6VV)
+
+```bash
+gdown --id 1CVczE86Vg3KIlXFuPOGu3Y_zGZHJ-6VV
+```
+
+### Kaggle
+
+link: [https://www.kaggle.com/duskvirkus/dafonts-free](https://www.kaggle.com/duskvirkus/dafonts-free)
 
 ## Running Scripts
 
